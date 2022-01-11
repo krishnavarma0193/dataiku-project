@@ -26,3 +26,15 @@ jobs:
       uses: py-actions/py-dependency-install@v3
       with:
         path: ${{ env.DEVOPS_DIR }}/requirements.txt
+      
+    - name: bundle and publish
+      run: python ${{ env.DEVOPS_DIR }}/bundle_publish.py
+      shell: sh
+      
+    - name: dev deploy and test
+      run: python ${{ env.DEVOPS_DIR }}/run_deploy_dev.py
+      shell: sh
+    
+    - name: prod deploy
+      run: python ${{ env.DEVOPS_DIR }}/run_deploy_prod.py
+      shell: sh
